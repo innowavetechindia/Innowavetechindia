@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innowave Technologies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/x-icon" href="innovave-logo.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-mid: #253459;
+      --steel: #4a6fa5;
+      --sky: #5b9bd5;
+      --accent: #00c6ff;
+      --accent2: #38e8c6;
+      --light: #f0f4f9;
+      --white: #ffffff;
+      --text: #1c2b3a;
+      --muted: #6b7f95;
+      --border: rgba(91, 155, 213, 0.18);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── PAGE SYSTEM ── */
+    .page {
+      display: none;
+      min-height: 100vh;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(26, 39, 68, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 198, 255, 0.12);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .nav-logo img{
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      color: var(--navy);
+      font-size: 14px;
+      
+    }
+
+    .nav-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 17px;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      background: rgba(0, 198, 255, 0.08);
+      border-color: rgba(0, 198, 255, 0.2);
+    }
+
+    /* ── HOME HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 68px;
+      background: linear-gradient(160deg, var(--navy) 0%, #1e3a5f 55%, #0d2137 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse 800px 500px at 50% 80%, rgba(0, 198, 255, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background-image: linear-gradient(rgba(0, 198, 255, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 198, 255, 0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px;
+      max-width: 900px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: rgba(0, 198, 255, 0.1);
+      border: 1px solid rgba(0, 198, 255, 0.3);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      color: var(--white);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto 44px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(0, 198, 255, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 198, 255, 0.45);
+    }
+
+    .btn-ghost {
+      padding: 14px 32px;
+      border-radius: 8px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: var(--white);
+      font-weight: 500;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 198, 255, 0.08);
+      top: 10%;
+      left: -5%;
+      animation-delay: 0s;
+    }
+
+    .orb2 {
+      width: 200px;
+      height: 200px;
+      background: rgba(56, 232, 198, 0.07);
+      bottom: 10%;
+      right: 0%;
+      animation-delay: 3s;
+    }
+
+    /* ── ALTERNATING LAYOUT (shared) ── */
+    .alt-row {
+      padding: 80px 5vw;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .alt-row:nth-child(odd) {
+      background: var(--white);
+    }
+
+    .alt-row:nth-child(even) {
+      background: var(--light);
+    }
+
+    .alt-row-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .alt-row-inner.reverse {}
+
+    .alt-img-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(26, 39, 68, 0.12);
+    }
+
+    .alt-img-wrap img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+      border-radius: 18px;
+      transition: transform 0.5s;
+    }
+
+    .alt-img-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    .alt-text-box {}
+
+    .alt-service-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 999px;
+      background: rgba(0, 198, 255, 0.1);
+      border: 1px solid rgba(0, 198, 255, 0.25);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .alt-text-box h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      color: var(--navy);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .alt-accent {
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .alt-text-box p {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .alt-text-box .text-card {
+      margin-top: 0;
+      padding: 28px 26px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .alt-row:nth-child(even) .alt-text-box .text-card {
+      background: var(--white);
+    }
+
+    /* HOME — section titles */
+    .home-section-head {
+      max-width: 1100px;
+      margin: 0 auto 52px;
+    }
+
+    .home-section-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .home-section-head p {
+      font-size: 15.5px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .home-section-head .sh-bar {
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin: 10px 0 16px;
+    }
+
+    /* HOME features section (dark bg) */
+    .features-section {
+      padding: 90px 5vw;
+      background: var(--navy);
+    }
+
+    .features-section .home-section-head h2 {
+      color: var(--white);
+    }
+
+    .features-section .home-section-head p {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    /* HOME services preview section */
+    .home-services-preview {
+      background: var(--light);
+    }
+
+    .home-services-preview .alt-row {
+      border-bottom: none;
+    }
+
+    .home-services-preview .alt-row:nth-child(odd) {
+      background: var(--light);
+    }
+
+    .home-services-preview .alt-row:nth-child(even) {
+      background: var(--white);
+    }
+
+    /* Dark alt row (for features section) */
+    .dark-alt-row {
+      padding: 0 5vw;
+      margin-bottom: 32px;
+    }
+
+    .dark-alt-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .dark-alt-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .dark-feature-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 198, 255, 0.12);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .dark-feature-card:hover {
+      border-color: rgba(0, 198, 255, 0.35);
+      transform: translateY(-4px);
+    }
+
+    .df-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .df-icon {
+      font-size: 30px;
+    }
+
+    .dark-feature-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .dark-feature-card p {
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.75;
+    }
+
+    .df-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+
+    /* ── SERVICES PAGE ── */
+    .page-hero {
+      padding: 130px 5vw 70px;
+      background: linear-gradient(160deg, var(--navy) 0%, #1e3a5f 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 50% 120%, rgba(0, 198, 255, 0.08) 0%, transparent 70%);
+    }
+
+    .page-hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--white);
+      position: relative;
+    }
+
+    .page-hero p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 16px auto 0;
+      position: relative;
+    }
+
+    /* ── ABOUT PAGE ── */
+    .about-page-content {
+      padding: 0;
+    }
+
+    .about-intro-section {
+      padding: 80px 5vw;
+      background: var(--white);
+    }
+
+    .about-intro-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .accent-bar {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin-bottom: 22px;
+    }
+
+    .about-text p {
+      font-size: 15.5px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .about-visual {
+      background: linear-gradient(135deg, var(--navy), #1e3a5f);
+      border-radius: 20px;
+      padding: 40px 32px;
+      border: 1px solid rgba(0, 198, 255, 0.15);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 198, 255, 0.1);
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    /* About values section header */
+    .about-values-head {
+      padding: 70px 5vw 20px;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .about-values-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .about-values-head .bar {
+      width: 44px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+      margin: 12px auto;
+    }
+
+    .about-values-head p {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ── CONTACT PAGE ── */
+    .contact-section {
+      padding: 80px 5vw;
+      background: var(--light);
+    }
+
+    .contact-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.7fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    .gform-wrap {
+      background: var(--white);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 32px rgba(26, 39, 68, 0.07);
+      overflow: hidden;
+    }
+
+    .gform-wrap iframe {
+      width: 100%;
+      height: 820px;
+      border: none;
+      display: block;
+    }
+
+    .gform-cta-wrap {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 52px 40px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 32px rgba(26, 39, 68, 0.07);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .gform-cta-icon {
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .gform-cta-wrap h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--navy);
+    }
+
+    .gform-cta-wrap>p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+
+    .gform-btn {
+      display: inline-block;
+      padding: 16px 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--navy);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(0, 198, 255, 0.3);
+      margin-top: 8px;
+    }
+
+    .gform-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 198, 255, 0.45);
+    }
+
+    .gform-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      opacity: 0.7;
+      margin-top: -6px;
+    }
+
+    .contact-info h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .contact-info p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    .info-item h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .info-item p {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .hours-table {
+      margin-top: 6px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--muted);
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-row:last-child {
+      border: none;
+    }
+
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 32px rgba(26, 39, 68, 0.07);
+    }
+
+    .contact-form-wrap h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--navy);
+      margin-bottom: 28px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--light);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14.5px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(91, 155, 213, 0.12);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0, 198, 255, 0.25);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 198, 255, 0.4);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 32px;
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .form-error {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(255, 80, 80, 0.08);
+      border: 1px solid rgba(255, 80, 80, 0.25);
+      color: #c0392b;
+      font-size: 13.5px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .rate-limit-banner {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 8px;
+      background: rgba(255, 165, 0, 0.08);
+      border: 1px solid rgba(255, 165, 0, 0.3);
+      color: #a0620a;
+      font-size: 13.5px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255, 255, 255, 0.45);
+      padding: 28px 5vw;
+      text-align: center;
+      font-size: 13px;
+      border-top: 1px solid rgba(0, 198, 255, 0.08);
+    }
+
+    footer span {
+      color: var(--accent);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+
+      .alt-row-inner,
+      .alt-row-inner.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .alt-row-inner.reverse .alt-img-wrap {
+        order: -1;
+      }
+
+      .dark-alt-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .about-intro-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .gform-wrap iframe {
+        height: 900px;
+      }
+
+      .nav-name {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand" onclick="showPage('home')">
+      <div class="nav-logo">
+      
+          <img src="./innovave-logo.png" alt="Innowave Technologies">
+        
+      </div>
+      <span class="nav-name">Innowave Technologies</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+      <a onclick="showPage('services')" id="nav-services">Services</a>
+      <a onclick="showPage('about')" id="nav-about">About Us</a>
+      <a onclick="showPage('contact')" id="nav-contact">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════ HOME ══════════════ -->
+  <div class="page active" id="page-home">
+
+    <!-- HERO — unchanged -->
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="hero-content">
+        <div class="hero-tag">Next-Generation IT & AI Solutions</div>
+        <h1>Building Tomorrow's<br><span>Technology</span> — Today.</h1>
+        <p class="hero-sub">Smart design. Seamless experience. Powerful technology. We help businesses grow, students
+          learn, and ideas turn into reality.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('services')">Explore Services</button>
+          <button class="btn-ghost" onclick="showPage('contact')">Get In Touch</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT MAKES US DIFFERENT — alternating layout -->
+    <section class="features-section">
+      <div class="home-section-head">
+        <h2>What Makes Us Different</h2>
+        <div class="sh-bar"></div>
+        <p>We combine cutting-edge technology with real-world practicality to deliver results that matter.</p>
+      </div>
+
+      <div class="dark-alt-row">
+        <div class="dark-alt-inner">
+          <div class="dark-feature-card">
+            <div class="df-num">01</div>
+            <div class="df-icon-row">
+              <div class="df-icon">🤖</div>
+              <h3>AI-Powered Solutions</h3>
+            </div>
+            <p>We deliver intelligent tools that streamline operations, enable predictive intelligence, and enhance
+              strategic decision-making. Our AI systems learn, adapt, and scale alongside your business.</p>
+          </div>
+          <div class="dark-feature-card">
+            <div class="df-num">02</div>
+            <div class="df-icon-row">
+              <div class="df-icon">🔒</div>
+              <h3>Secure & Reliable</h3>
+            </div>
+            <p>High-performance systems built with security at their core — strong data protection, maximum uptime, and
+              seamless scalability. Your operations never stop, and your data stays protected.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="dark-alt-row">
+        <div class="dark-alt-inner">
+          <div class="dark-feature-card">
+            <div class="df-num">03</div>
+            <div class="df-icon-row">
+              <div class="df-icon">🎨</div>
+              <h3>Beautiful Experiences</h3>
+            </div>
+            <p>Modern, intuitive design with robust architecture to deliver seamless, engaging user experiences across
+              all devices. Every pixel is crafted with purpose and every interaction feels natural.</p>
+          </div>
+          <div class="dark-feature-card">
+            <div class="df-num">04</div>
+            <div class="df-icon-row">
+              <div class="df-icon">📈</div>
+              <h3>Scalable & Future-Ready</h3>
+            </div>
+            <p>Our scalable service models are tailored to meet evolving business needs without ever compromising on
+              quality. Built for where you are today and where you'll be tomorrow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES PREVIEW — alternating image+text -->
+    <div class="home-services-preview">
+
+      <!-- AI-Based Tools -->
+      <div class="alt-row">
+        <div class="alt-row-inner">
+          <div class="alt-text-box">
+            <div class="alt-text-box text-card"
+              style="padding:28px 26px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;">
+              <span class="alt-service-tag">AI & Automation</span>
+              <h2>Intelligent Systems. Actionable Outcomes.</h2>
+              <div class="alt-accent"></div>
+              <p>We don't just implement AI — we engineer systems that learn, adapt, and scale. By bridging the gap
+                between raw data and actionable intelligence, we help you anticipate market shifts and automate your
+                most intensive workflows. Our commitment is making sophisticated AI a practical, high-impact tool that
+                empowers your daily operations and fuels long-term growth.</p>
+            </div>
+          </div>
+          <div class="alt-img-wrap">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80" alt="AI Solutions" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Web Development -->
+      <div class="alt-row">
+        <div class="alt-row-inner reverse">
+          <div class="alt-img-wrap">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80" alt="Web Development" />
+          </div>
+          <div class="alt-text-box">
+            <span class="alt-service-tag">Web Development</span>
+            <h2>Web Development</h2>
+            <div class="alt-accent"></div>
+            <p>We engineer sophisticated digital ecosystems designed to serve as your brand's most powerful asset. Our
+              development philosophy integrates high-speed performance with seamless cross-platform responsiveness and
+              built-in SEO architecture. By leveraging modern frameworks and clean-code principles, we ensure your site
+              is secure, scalable, and meticulously optimized to convert organic traffic into measurable business
+              growth.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      © 2025 <span>Innowave Technologies</span>. All rights reserved. · Amroli, Surat
+    </footer>
+  </div>
+
+  <!-- ══════════════ SERVICES ══════════════ -->
+  <div class="page" id="page-services">
+    <div class="page-hero">
+      <h1>Our Services</h1>
+      <p>Comprehensive digital solutions crafted to power your business forward.</p>
+    </div>
+
+    <!-- AI-Based Tools -->
+    <div class="alt-row" style="background:var(--white)">
+      <div class="alt-row-inner">
+        <div class="alt-text-box">
+          <div style="padding:28px 26px;background:var(--light);border:1.5px solid var(--border);border-radius:14px;">
+            <span class="alt-service-tag">AI & Automation</span>
+            <h2>Intelligent Systems. Actionable Outcomes.</h2>
+            <div class="alt-accent"></div>
+            <p>We don't just implement AI — we engineer systems that learn, adapt, and scale. By bridging the gap
+              between raw data and actionable intelligence, we help you anticipate market shifts and automate your most
+              intensive workflows. Our commitment is making sophisticated AI a practical, high-impact tool that empowers
+              your daily operations and fuels long-term growth.</p>
+          </div>
+        </div>
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=700&q=80" alt="AI Solutions" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Web Development -->
+    <div class="alt-row" style="background:var(--light)">
+      <div class="alt-row-inner reverse">
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=700&q=80" alt="Web Development" />
+        </div>
+        <div class="alt-text-box">
+          <span class="alt-service-tag">Web & Digital</span>
+          <h2>Web Development</h2>
+          <div class="alt-accent"></div>
+          <p>We engineer sophisticated digital ecosystems designed to serve as your brand's most powerful asset. Our
+            development philosophy integrates high-speed performance with seamless cross-platform responsiveness and
+            built-in SEO architecture. By leveraging modern frameworks and clean-code principles, we ensure your site is
+            secure, scalable, and meticulously optimized to convert organic traffic into measurable business growth.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Software Development -->
+    <div class="alt-row" style="background:var(--white)">
+      <div class="alt-row-inner">
+        <div class="alt-text-box">
+          <div style="padding:28px 26px;background:var(--light);border:1.5px solid var(--border);border-radius:14px;">
+            <span class="alt-service-tag">Software</span>
+            <h2>Software Development</h2>
+            <div class="alt-accent"></div>
+            <p>We specialize in developing bespoke software that transforms operational challenges into competitive
+              advantages. At Innowave Tech, we replace generic tools with custom-built cloud and desktop applications
+              tailored to your specific workflow. By prioritizing scalability, security, and intuitive user experience,
+              we empower your organization with high-performance systems that integrate flawlessly and put you back in
+              full control of your digital landscape.</p>
+          </div>
+        </div>
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&q=80"
+            alt="Software Development" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Digital Marketing -->
+    <div class="alt-row" style="background:var(--light)">
+      <div class="alt-row-inner reverse">
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1533750516457-a7f992034fec?w=700&q=80" alt="Digital Marketing" />
+        </div>
+        <div class="alt-text-box">
+          <span class="alt-service-tag">Marketing</span>
+          <h2>Digital Marketing</h2>
+          <div class="alt-accent"></div>
+          <p>We transform your digital footprint into a powerful lead-generation machine. Our marketing suite is built
+            on high-fidelity data and psychological triggers designed to convert passive browsers into loyal advocates.
+            By integrating advanced SEO tactics with high-impact paid media and cohesive brand storytelling, we deliver
+            a consistent, profitable message across every channel. Don't just exist online — dominate your niche with
+            strategies that prioritize ROI and long-term brand equity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IT Support -->
+    <div class="alt-row" style="background:var(--white)">
+      <div class="alt-row-inner">
+        <div class="alt-text-box">
+          <div style="padding:28px 26px;background:var(--light);border:1.5px solid var(--border);border-radius:14px;">
+            <span class="alt-service-tag">IT Support</span>
+            <h2>Reliable IT Support</h2>
+            <div class="alt-accent"></div>
+            <p>Technology should work for you — not the other way around. Our IT support team provides comprehensive
+              setup, proactive maintenance, rapid troubleshooting, and ongoing technical assistance that keeps your
+              operations running without interruption. From network infrastructure to workstation management, we handle
+              the complexity so your team can stay focused on what they do best.</p>
+          </div>
+        </div>
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=80" alt="IT Support" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Professional Training -->
+    <div class="alt-row" style="background:var(--light)">
+      <div class="alt-row-inner reverse">
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=700&q=80"
+            alt="Professional Training" />
+        </div>
+        <div class="alt-text-box">
+          <span class="alt-service-tag">Training</span>
+          <h2>Professional Training</h2>
+          <div class="alt-accent"></div>
+          <p>Knowledge is your greatest competitive advantage. Our skill-building programs in web development, AI tools,
+            software platforms, and digital literacy are designed for both individuals seeking career advancement and
+            corporate teams ready to upskill. With hands-on curriculum, real-world projects, and expert mentorship, we
+            ensure every participant walks away with capabilities they can apply from day one.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 <span>Innowave Technologies</span>. All rights reserved. · Amroli, Surat
+    </footer>
+  </div>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <div class="page" id="page-about">
+    <div class="page-hero">
+      <h1>About Us</h1>
+      <p>A next-generation IT and AI solutions company dedicated to transforming businesses with intelligent technology.
+      </p>
+    </div>
+
+    <!-- Who We Are -->
+    <section class="about-intro-section">
+      <div class="about-intro-inner">
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <div class="accent-bar"></div>
+          <p>Innowave Tech is a next-generation IT and AI solutions company dedicated to transforming businesses with
+            intelligent technology. Founded with the vision to bring advanced digital tools to everyone, we provide
+            services that are simple, effective, and built for the future.</p>
+          <p>At Innowave Tech, we create powerful digital solutions that help businesses grow, students learn, and ideas
+            turn into reality. We specialize in Web Development, Software Solutions, AI-based Tools, Digital Marketing,
+            IT Support, and Professional Training Programs.</p>
+          <p>Our goal is to combine innovation with practicality, delivering products that are smart, scalable, and
+            future-ready.</p>
+        </div>
+        <div class="about-visual">
+          <div class="about-stats">
+            <div class="stat">
+              <div class="stat-num">6+</div>
+              <div class="stat-label">Core Services</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Client Focus</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">AI</div>
+              <div class="stat-label">Powered</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Scalability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Core Values — alternating layout -->
+    <div class="about-values-head">
+      <h2>Our Core Values</h2>
+      <div class="bar"></div>
+      <p>The principles that guide everything we build, every partnership we form, and every decision we make.</p>
+    </div>
+
+    <!-- Innovation -->
+    <div class="alt-row" style="background:var(--light)">
+      <div class="alt-row-inner">
+        <div class="alt-text-box">
+          <div style="padding:28px 26px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;">
+            <span class="alt-service-tag">Value 01</span>
+            <h2>Innovation</h2>
+            <div class="alt-accent"></div>
+            <p>We constantly explore new technologies to bring forward-thinking solutions to every project. Innovation
+              isn't just a buzzword for us — it's an active discipline. Our team dedicates time each week to researching
+              emerging tools, frameworks, and methodologies so that every solution we deliver is ahead of the curve.</p>
+          </div>
+        </div>
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&q=80" alt="Innovation" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Practicality -->
+    <div class="alt-row" style="background:var(--white)">
+      <div class="alt-row-inner reverse">
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&q=80" alt="Practicality" />
+        </div>
+        <div class="alt-text-box">
+          <span class="alt-service-tag">Value 02</span>
+          <h2>Practicality</h2>
+          <div class="alt-accent"></div>
+          <p>We build solutions that work in the real world — effective, simple, and impactful from day one. We believe
+            the best technology is the technology people actually use. That's why every feature we design goes through
+            rigorous real-world validation before it reaches your hands, ensuring maximum usability and immediate return
+            on investment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partnership -->
+    <div class="alt-row" style="background:var(--light)">
+      <div class="alt-row-inner">
+        <div class="alt-text-box">
+          <div style="padding:28px 26px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;">
+            <span class="alt-service-tag">Value 03</span>
+            <h2>Partnership</h2>
+            <div class="alt-accent"></div>
+            <p>From initial consultation to ongoing support, we're with you every step of the journey. We don't
+              disappear after launch. Our team becomes an extension of yours — available, responsive, and deeply
+              invested in your success. Long-term relationships built on trust and transparency are the foundation of
+              everything we do.</p>
+          </div>
+        </div>
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Partnership" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Growth -->
+    <div class="alt-row" style="background:var(--white)">
+      <div class="alt-row-inner reverse">
+        <div class="alt-img-wrap">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Growth" />
+        </div>
+        <div class="alt-text-box">
+          <span class="alt-service-tag">Value 04</span>
+          <h2>Growth</h2>
+          <div class="alt-accent"></div>
+          <p>We design for scale — helping businesses and individuals grow sustainably into the future. Our
+            architectures are built modular and expandable, so as your ambitions grow, your technology grows with you.
+            We think not just about solving today's problem, but about setting the foundation for where you'll be in
+            five years.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      © 2025 <span>Innowave Technologies</span>. All rights reserved. · Amroli, Surat
+    </footer>
+  </div>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <div class="page" id="page-contact">
+    <div class="page-hero">
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you. Reach out and let's build something great together.</p>
+    </div>
+
+    <section class="contact-section">
+      <div class="contact-inner">
+        <!-- Info -->
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <div class="accent-bar"></div>
+          <p>Have a project in mind or need IT support? Fill out the form or reach us directly — our team responds
+            promptly.</p>
+          <div class="info-block">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <h4>Office</h4>
+                <p>54 Jay Raghuvir, opp. Madhuram Plaza,<br>Amroli, Surat</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div>
+                <h4>Contact Person</h4>
+                <p>Mr. Jani<br>+91 79842 89313</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">🕐</div>
+              <div>
+                <h4>Opening Hours</h4>
+                <div class="hours-table">
+                  <div class="hours-row"><span>Monday – Friday</span><span>10:00 AM – 7:00 PM</span></div>
+                  <div class="hours-row"><span>Saturday</span><span>Closed</span></div>
+                  <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Form CTA -->
+        <div class="gform-cta-wrap">
+          <div class="gform-cta-icon">✉️</div>
+          <h3>Send Us a Message</h3>
+          <p>Click the button below to open our contact form. Tell us about your project, ask a question, or request a
+            service — we respond within 24 hours.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhLFYRWNLpBPakFr_lCrNiEFo0kO6L8znpPvGw5Sqd2P9RtA/viewform?usp=publish-editor"
+            target="_blank" rel="noopener noreferrer" class="gform-btn">
+            Click Here to Open the Form →
+          </a>
+          <p class="gform-note">Opens in a new tab · Powered by Google Forms</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 <span>Innowave Technologies</span>. All rights reserved. · Amroli, Surat
+    </footer>
+  </div>
+
+  <script>
+    function showPage(name) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      document.getElementById('page-' + name).classList.add('active');
+      document.getElementById('nav-' + name).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+
+</html>
