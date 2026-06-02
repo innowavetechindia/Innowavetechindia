@@ -128,6 +128,15 @@
       border-color: rgba(0, 198, 255, 0.2);
     }
 
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--white);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
     /* ── HOME HERO ── */
     .hero {
       min-height: 100vh;
@@ -969,6 +978,33 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
 
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(26, 39, 68, 0.98);
+        flex-direction: column;
+        padding: 20px 5vw;
+        border-bottom: 1px solid rgba(0, 198, 255, 0.12);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        text-align: center;
+        padding: 12px 16px;
+        font-size: 16px;
+      }
+
       .alt-row-inner,
       .alt-row-inner.reverse {
         grid-template-columns: 1fr;
@@ -1015,6 +1051,9 @@
       </div>
       <span class="nav-name">Innowave Technologies</span>
     </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation">
+      ☰
+    </button>
     <div class="nav-links">
       <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
       <a onclick="showPage('services')" id="nav-services">Services</a>
@@ -1476,11 +1515,16 @@
   </div>
 
   <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('show');
+    }
+
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
       document.getElementById('page-' + name).classList.add('active');
       document.getElementById('nav-' + name).classList.add('active');
+      document.querySelector('.nav-links').classList.remove('show');
       window.scrollTo(0, 0);
     }
   </script>
